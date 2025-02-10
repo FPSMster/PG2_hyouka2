@@ -1,30 +1,30 @@
-#include "./Header/Bullet.h"
+#include "Bullet.h"
 #include <Novice.h>
 
 Bullet::Bullet(int speed, int radius) {
 	posX_ = 0;
-	posY = 0;
-	bulletSpeed = speed;
-	bulletRadius = radius;
-	isShot = false;
+	posY_ = 0;
+	speed_ = speed;
+	radius_ = radius;
+	isShot_ = false;
 }
 
 void Bullet::Reset()
 {
-	isShot = false;
+	isShot_ = false;
 }
 
 void Bullet::Update() {
-	if (isShot == true) {
-		posY += bulletSpeed;
+	if (isShot_ == true) {
+		posY_ += speed_;
 	}
-	if (posY <= 0) {
-		isShot = false;
+	if (posY_ <= 0) {
+		isShot_ = false;
 	}
 }
 
 void Bullet::Draw() {
-	if (isShot == true) {
-		Novice::DrawEllipse(posX_, posY, bulletRadius, bulletRadius, 0.0f, WHITE, kFillModeSolid);
+	if (isShot_ == true) {
+		Novice::DrawEllipse(posX_, posY_, radius_, radius_, 0.0f, WHITE, kFillModeSolid);
 	}
 }

@@ -1,5 +1,6 @@
-#include "./Header/Enemy.h"
+#include "Enemy.h"
 #include <Novice.h>
+
 
 Enemy::Enemy(int posX, int posY)
 {

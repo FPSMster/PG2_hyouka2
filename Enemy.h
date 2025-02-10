@@ -7,9 +7,17 @@ private:
 	int posY_;
 	int speed_;
 	int radius_;
-	static int isAlive;
+	
 
 public:
+
+	bool isAlive;
+
+	int GetPosX_() { return posX_; };
+	int GetPosY_() { return posY_; };
+	int GetSpeed_() { return speed_; };
+	int GetRadius_() { return radius_; };
+	
 
 	Enemy(int posX, int posY);
 

@@ -1,11 +1,11 @@
 #include <Novice.h>
-#include"./Header/Enemy.h"
-#include"./Header/Player.h"
-#include"./Header/Bullet.h"
+#include"Enemy.h"
+#include"Player.h"
+#include"Bullet.h"
 
 const char kWindowTitle[] = "学籍番号";
 
-int Enemy::isAlive;
+//bool Enemy::isAlive;
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -58,30 +58,32 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			for (int i = 0; i < 2; i++) {
 				enemy[i]->Update();
-				float distX = static_cast<float> (enemy[i]->posX_ - player->bullet_->posX_);
-				float distY = static_cast<float> (enemy[i]->posY_ - player->bullet_->posY);
+				float distX = static_cast<float> (enemy[i]->GetPosX_() - player->bullet_->posX_);
+				float distY = static_cast<float> (enemy[i]->GetPosY_() - player->bullet_->posY_);
 				float dist = (distX * distX) + (distY * distY);
-				int radius = enemy[i]->radius_ + enemy[i]->radius_;
+				int radius = enemy[i]->GetRadius_() + enemy[i]->GetRadius_();
 				if (dist <= radius * radius) {
-					Enemy::isAlive = false;
+					enemy[i]->isAlive=false;
 				}
 
-				float peX = static_cast<float> (enemy[i]->posX_ - player->posX_);
-				float peY = static_cast<float> (enemy[i]->posY_ - player->posY_);
+				if (enemy[i]->isAlive==false) {
+					scene = GAMECLEAR;
+				}
+
+				float peX = static_cast<float> (enemy[i]->GetPosX_() - player->GetPosX_());
+				float peY = static_cast<float> (enemy[i]->GetPosY_() - player->GetPosY_());
 				float pe = (peX * peX) + (peY * peY);
-				int peRadius = enemy[i]->radius_ + enemy[i]->radius_;
+				int peRadius = enemy[i]->GetRadius_() + enemy[i]->GetRadius_();
 				if (pe <= peRadius * peRadius) {
-					player->isAlive = true;
+					player->isAlive_=true;
 				}
 			}
 
 			player->Update(keys, preKeys);
 
-
-				if (Enemy::isAlive==false) {
-					scene = GAMECLEAR;
-				}
-				if (player->isAlive==true) {
+			
+				
+				if (player->isAlive_ == true) {
 					scene = GAMEOVER;
 				}
 

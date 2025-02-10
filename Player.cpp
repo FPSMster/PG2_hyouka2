@@ -1,5 +1,7 @@
-#include "./Header/Player.h"
+#include "Player.h"
 #include <Novice.h>
+
+
 
 Player::Player()
 {
@@ -8,15 +10,15 @@ Player::Player()
 	posY_ = 700;
 	speed_ = 8;
 	radius_ = 16;
-	isAlive = false;
+	isAlive_ = false;
 }
 
 void Player::Reset()
 {
 	posX_ = 640;
 	posY_ = 700;
-	isAlive = false;
-	bullet_->posY = -100;
+	isAlive_ = false;
+	bullet_->posY_=-100;
 }
 
 
@@ -45,10 +47,10 @@ void Player::Update(char* keys, char* preKeys)
 	if (posX_ - 16 <= 0) {
 		posX_ = 0 + 16;
 	}
-	if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0 && bullet_->isShot == false) {
-		bullet_->isShot = true;
+	if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0 && bullet_->isShot_ == false) {
+		bullet_->isShot_=true;
 		bullet_->posX_ = posX_;
-		bullet_->posY = posY_;
+		bullet_->posY_ = posY_;
 	}
 	bullet_->Update();
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "./Header/Bullet.h"
+#include "Bullet.h"
 
 class Player
 {
@@ -10,9 +10,16 @@ private:
 	int speed_;
 	int radius_;
 
-	bool isAlive;
+	
 
 public:
+	bool isAlive_;
+
+	int GetPosX_() { return posX_; };
+	int GetPosY_() { return posY_; };
+	int GetSpeed_() { return speed_; };
+	int GetRadius_() { return radius_; };
+	
 
 	Bullet* bullet_;
 

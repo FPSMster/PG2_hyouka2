@@ -1,16 +1,15 @@
 #pragma once
 class Bullet
 {
-private:
+public:
 
 
 	int posX_;
-	int posY;
-	int bulletSpeed;
-	int bulletRadius;
-	bool isShot;
+	int posY_;
+	int speed_;
+	int radius_;
 
-public:
+	bool isShot_;
 
 	Bullet(int speed, int radius);
 
